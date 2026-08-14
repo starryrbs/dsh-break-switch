@@ -1,0 +1,51 @@
+{
+  "name": "dsh-break-switch",
+  "version": "0.1.0",
+  "description": "DSH plugin that switches the macOS frontmost app to a break target (an app or browser page) while an agent is running, then switches back when it finishes",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/**"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke:front": "osascript -e 'tell application \"System Events\" to set frontApp to name of first application process whose frontmost is true'",
+    "smoke:app": "osascript -e 'tell application \"System Events\" to set frontmost of first process whose name is \"VSCode\" to true'"
+  },
+  "keywords": [
+    "dsh",
+    "cordis",
+    "plugin",
+    "macos",
+    "focus",
+    "break"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.19"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-agent": "^0.1.0-rc.6"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-agent": "^0.1.0-rc.6",
+    "@deepseek-ai/schemastery": "3.18.1",
+    "typescript": "^5.5.0",
+    "vitest": "^2.1.0",
+    "@types/node": "^22.0.0"
+  }
+}
