@@ -160,7 +160,7 @@ function makeSink(ctx: Context): ActionSink {
  */
 export function apply(ctx: Context, config: Config): void {
   validateConfig(config)
-  console.log(`[dsh-break-switch] LOADED; enabled=${config.enabled !== false}, target=${JSON.stringify(config.target)}, browser=${config.browser ?? 'chrome'}, minRunSeconds=${config.minRunSeconds ?? 2}`)
+  ctx.logger.info(`[dsh-break-switch] loaded; enabled=${config.enabled !== false}, target=${JSON.stringify(config.target)}, browser=${config.browser ?? 'chrome'}, minRunSeconds=${config.minRunSeconds ?? 2}`)
   if (config.enabled === false) return
   const browser: Browser = config.browser ?? 'chrome'
   const minRunSeconds: number = config.minRunSeconds ?? 2
